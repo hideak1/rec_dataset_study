@@ -1,0 +1,122 @@
+site_name: RecSys Experimental Tutorials
+site_description: "Real-world dataset experiments: DeepFM/DCN on Criteo, DIN/Transformer on Taobao, ESMM on Ali-CCP"
+site_author: "RecSys Study Project"
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - announce.dismiss
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font: false
+  icon:
+    logo: material/flask-outline
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      include_source: true
+      execute: false
+      allow_errors: true
+      include: ["*.ipynb"]
+      ignore: [".*"]
+      no_input: false
+      show_input: true
+      include_requirejs: false
+      custom_mathjax_url: "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - getting-started/index.md
+  - "Experiment 1: Criteo — Feature Crossing":
+    - criteo/index.md
+    - "1.1 Dataset Exploration & Feature Engineering": notebooks/01_criteo_feature_crossing/01_data_exploration.ipynb
+    - "1.2 DeepFM: Factorization Meets Deep Learning": notebooks/01_criteo_feature_crossing/02_deepfm.ipynb
+    - "1.3 DCN & DCN-V2: Deep Cross Networks": notebooks/01_criteo_feature_crossing/03_dcn.ipynb
+    - "1.4 Model Comparison & Analysis": notebooks/01_criteo_feature_crossing/04_comparison.ipynb
+  - "Experiment 2: Taobao — Sequential Modeling":
+    - taobao/index.md
+    - "2.1 Dataset Exploration & Behavior Analysis": notebooks/02_taobao_sequential/01_data_exploration.ipynb
+    - "2.2 DIN: Deep Interest Network": notebooks/02_taobao_sequential/02_din.ipynb
+    - "2.3 BST & SASRec: Transformer-based Sequential Models": notebooks/02_taobao_sequential/03_transformer.ipynb
+    - "2.4 Model Comparison & Attention Visualization": notebooks/02_taobao_sequential/04_comparison.ipynb
+  - "Experiment 3: Tenrec — Multi-Task CVR":
+    - aliccp/index.md
+    - "3.1 Dataset Exploration & Multi-Task Analysis": notebooks/03_tenrec_cvr/01_data_exploration.ipynb
+    - "3.2 ESMM: Entire Space Multi-Task Model": notebooks/03_tenrec_cvr/02_esmm.ipynb
+    - "3.3 Advanced Multi-Task: MMoE & PLE": notebooks/03_tenrec_cvr/03_advanced_cvr.ipynb
+    - "3.4 Multi-Task Models: Head-to-Head Comparison": notebooks/03_tenrec_cvr/04_comparison.ipynb
+  - "Experiment 4: Ali-CCP — Multi-Task CVR (Industry Benchmark)":
+    - aliccp-benchmark/index.md
+    - "4.1 Dataset Exploration & SSB Analysis": notebooks/04_aliccp_cvr/01_data_exploration.ipynb
+    - "4.2 ESMM: Entire Space Multi-Task Model": notebooks/04_aliccp_cvr/02_esmm.ipynb
+    - "4.3 Advanced Multi-Task: MMoE & PLE": notebooks/04_aliccp_cvr/03_advanced_cvr.ipynb
+    - "4.4 Multi-Task Models: Head-to-Head Comparison": notebooks/04_aliccp_cvr/04_comparison.ipynb

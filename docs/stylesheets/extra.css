@@ -1,0 +1,39 @@
+/* Custom styles for RecSys Experimental Tutorials */
+:root {
+  --md-primary-fg-color: #1a73e8;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+}
+
+/* All tables - markdown, notebook, dataframe */
+.md-typeset table {
+  font-size: 0.74rem !important;
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  padding: 0.35em 0.7em !important;
+}
+
+/* Notebook-rendered tables */
+.jp-RenderedHTMLCommon table,
+.jp-OutputArea table,
+.cell-output table,
+table.dataframe {
+  font-size: 0.74rem !important;
+}
+
+.jp-RenderedHTMLCommon table th,
+.jp-RenderedHTMLCommon table td,
+.jp-OutputArea table th,
+.jp-OutputArea table td,
+table.dataframe th,
+table.dataframe td {
+  padding: 0.3em 0.6em !important;
+}
+
+.md-typeset code {
+  font-size: 0.85em;
+}

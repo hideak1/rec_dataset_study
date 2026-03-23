@@ -1,0 +1,36 @@
+# Data
+data/
+*.csv
+*.tsv
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+site/
+docs/notebooks/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model checkpoints
+*.pt
+*.pth
+checkpoints/
+.claude/
+progress.md
+rec_dataset_study/
+uv.lock
