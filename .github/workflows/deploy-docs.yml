@@ -28,16 +28,13 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material mkdocs-jupyter
 
-      - name: Copy notebooks to docs
+      - name: Copy notebooks and assets to docs
         run: |
-          mkdir -p docs/notebooks/01_criteo_feature_crossing
-          mkdir -p docs/notebooks/02_taobao_sequential
-          mkdir -p docs/notebooks/03_tenrec_cvr
-          mkdir -p docs/notebooks/04_aliccp_cvr
-          cp notebooks/01_criteo_feature_crossing/*.ipynb docs/notebooks/01_criteo_feature_crossing/
-          cp notebooks/02_taobao_sequential/*.ipynb docs/notebooks/02_taobao_sequential/
-          cp notebooks/03_tenrec_cvr/*.ipynb docs/notebooks/03_tenrec_cvr/
-          cp notebooks/04_aliccp_cvr/*.ipynb docs/notebooks/04_aliccp_cvr/
+          for dir in 01_criteo_feature_crossing 02_taobao_sequential 03_tenrec_cvr 04_aliccp_cvr; do
+            mkdir -p "docs/notebooks/$dir"
+            cp "notebooks/$dir/"*.ipynb "docs/notebooks/$dir/"
+            cp "notebooks/$dir/"*.png "docs/notebooks/$dir/" 2>/dev/null || true
+          done
 
       - name: Build MkDocs
         run: mkdocs build
